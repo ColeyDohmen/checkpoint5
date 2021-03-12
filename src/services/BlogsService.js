@@ -11,6 +11,11 @@ class BlogsService {
     AppState.blogs.push(res.data)
     // return res.data.id
   }
+
+  async delete(id) {
+    await api.delete('api/blogs/' + id)
+    this.getAll()
+  }
 }
 
 export const blogsService = new BlogsService()
