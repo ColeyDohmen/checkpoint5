@@ -1,20 +1,77 @@
 <template>
   <div class="blog container">
     <div class="row">
-      <div class="col-4">
-        <h1>This is the blog page</h1>
+      <div class="col text-center">
+        <h1>Blogs</h1>
+      </div>
+    </div>
+    <div class="row">
+      <form class="form-inline" @submit.prevent="createBlog">
+        <div class="form-group">
+          <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-control"
+            placeholder="Title"
+            aria-describedby="helpId"
+            v-model="state.newBlog.title"
+          />
+          <div class="form-group">
+            <input
+              type="text"
+              name="body"
+              id="body"
+              class="form-control"
+              placeholder="Body"
+              aria-describedby="helpId"
+              v-model="state.newBlog.body"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" @click="createBlog()">
+            New Blog
+          </button>
+        </div>
+      </form>
+
+      <div class="row">
+        <BlogComponent
+          v-for="blogData in state.blogs"
+          :key="blogData.id"
+          :blog="blogData"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { reactive, computed, onMounted } from 'vue'
+import { AppState } from '../AppState'
+import { blogsService } from '../services/BlogsService'
+import BlogComponent from '../components/BlogComponent'
+
 export default {
   name: 'BlogPage',
   setup() {
-    return {}
+    const state = reactive({
+      blogs: computed(() => AppState.blogs),
+      newBlog: {}
+    })
+    onMounted(() => {
+      blogsService.getAll()
+    })
+    return {
+      state,
+      async createBlog() {
+        await blogsService.createBlog(state.newBlog)
+        state.newBlog = {}
+      }
+    }
   },
-  components: {}
+  components: {
+    BlogComponent
+  }
 }
 </script>
 

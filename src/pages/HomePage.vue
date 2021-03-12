@@ -7,8 +7,8 @@
       alt="CodeWorks Logo"
     />
     <h1 class="my-5 bg-dark text-light p-3 rounded d-flex align-items-center">
-      <span class="mx-2 text-white">Vue 3 Starter</span>
-      <p>Hey</p>
+      <span class="mx-2 text-white">Bloggr</span>
+      <p></p>
     </h1>
   </div>
 </template>
