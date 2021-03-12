@@ -1,21 +1,23 @@
 <template>
   <div class="blogComponent container">
-    <div class="row card blog">
-      <i class="fas fa-times text-danger action" @click="deleteBlog"></i>
-      <div class="col-4">
-        <h2 class="card-title">
-          <!-- <div
-            class="text-right absolute top right p-2 z-2"
-            v-if="blog.creator.email == state.user"
-          > -->
+    <div class="row card blog" v-if="blog.creator">
+      <div class="text-right absolute top right p-2 z-2">
+        <i
+          class="fas fa-times text-danger action"
+          @click="deleteBlog"
+          v-if="blog.creator.email == state.user.email"
+        ></i>
+        <div class="card shadow">
+          <div class="col-12 text-center">
+            <h2 class="card-title">
+              {{ blog.title }}
+            </h2>
 
-          <!-- </div> -->
-          {{ blog.title }}
-        </h2>
-
-        <h4 v-if="blog.creator">
-          {{ blog.creator.email }}
-        </h4>
+            <h4 v-if="blog.creator">
+              {{ blog.creator.email }}
+            </h4>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -32,7 +34,7 @@ export default {
   },
   setup(props) {
     const state = reactive({
-      account: computed(() => AppState.account)
+      user: computed(() => AppState.user)
     })
     return {
       state,

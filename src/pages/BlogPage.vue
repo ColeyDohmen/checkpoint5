@@ -67,7 +67,6 @@ export default {
     return {
       state,
       async createBlog() {
-        debugger
         await blogsService.createBlog(state.newBlog)
         state.newBlog = {}
       }
