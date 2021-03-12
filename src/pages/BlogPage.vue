@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <form class="form-inline" @submit.prevent="createBlog">
+      <form class="form-inline">
         <div class="form-group">
           <input
             type="text"
@@ -28,7 +28,7 @@
               v-model="state.newBlog.body"
             />
           </div>
-          <button type="submit" class="btn btn-primary" @click="createBlog()">
+          <button type="button" class="btn btn-primary" @click="createBlog()">
             New Blog
           </button>
         </div>
@@ -56,7 +56,10 @@ export default {
   setup() {
     const state = reactive({
       blogs: computed(() => AppState.blogs),
-      newBlog: {}
+      newBlog: {
+        title: '',
+        body: ''
+      }
     })
     onMounted(() => {
       blogsService.getAll()
@@ -64,6 +67,7 @@ export default {
     return {
       state,
       async createBlog() {
+        debugger
         await blogsService.createBlog(state.newBlog)
         state.newBlog = {}
       }

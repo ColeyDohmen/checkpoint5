@@ -7,7 +7,7 @@ function loadPage(page) {
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'Home',
     component: loadPage('HomePage')
   },
@@ -23,7 +23,7 @@ const routes = [
     beforeEnter: authGuard
   },
   {
-    path: '/blogs',
+    path: '/',
     name: 'BlogPage',
     component: loadPage('BlogPage')
   }

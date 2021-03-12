@@ -5,7 +5,9 @@
         <h2 class="card-title">
           {{ blog.title }}
         </h2>
-        <h4>{{ blog.creator.email }}</h4>
+        <h4 v-if="blog.creator">
+          {{ blog.creator.email }}
+        </h4>
       </div>
     </div>
   </div>
