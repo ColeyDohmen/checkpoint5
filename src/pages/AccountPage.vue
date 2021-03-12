@@ -4,6 +4,9 @@
     <img class="rounded" :src="account.picture" alt="" />
     <p>{{ account.email }}</p>
   </div>
+  <div class="div">
+    <h4>Your Blogs:</h4>
+  </div>
 </template>
 
 <script>

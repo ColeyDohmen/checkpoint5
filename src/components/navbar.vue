@@ -20,7 +20,7 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
           <router-link :to="{ name: 'Home' }" class="nav-link">
-            Home
+            Delete me pls
           </router-link>
         </li>
         <li class="nav-item">
@@ -30,7 +30,12 @@
         </li>
         <li class="nav-item">
           <router-link :to="{ name: 'BlogPage' }" class="nav-link">
-            Blogs
+            Home
+          </router-link>
+        </li>
+        <li class="nav-item">
+          <router-link :to="{ name: 'RealBlogPage' }" class="nav-link">
+            Blog
           </router-link>
         </li>
       </ul>
