@@ -16,6 +16,11 @@ class BlogsService {
     await api.delete('api/blogs/' + id)
     this.getAll()
   }
+
+  async getAllComments(id) {
+    const res = await api.get(`api/blogs/${id}/comments`)
+    AppState.comments = res.data
+  }
 }
 
 export const blogsService = new BlogsService()

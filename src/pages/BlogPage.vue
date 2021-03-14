@@ -6,6 +6,7 @@
       </div>
     </div>
     <div class="row">
+      <!-- FIXME isAuthenticated v-if-->
       <form class="form-inline">
         <div class="form-group">
           <input

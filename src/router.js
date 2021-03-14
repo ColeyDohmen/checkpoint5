@@ -28,11 +28,12 @@ const routes = [
     component: loadPage('BlogPage')
   },
   {
-    path: '/blogs',
+    path: '/blogs/:id',
     name: 'RealBlogPage',
     component: loadPage('RealBlogPage')
   }
 ]
+// '/blogs/:id',
 
 const router = createRouter({
   linkActiveClass: 'router-link-active',
