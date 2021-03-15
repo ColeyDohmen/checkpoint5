@@ -8,9 +8,9 @@
             @click="deleteComment"
             v-if="comment.creator.email == state.user.email"
           ></i>
-          <div class="text-center">
-            <h2>{{ comment.body }}</h2>
-            <h5>-{{ comment.creator.email }}</h5>
+          <div class="text-center shadow">
+            <h3>{{ comment.body }}</h3>
+            <p>-{{ comment.creator.email }}</p>
           </div>
           <p></p>
         </div>

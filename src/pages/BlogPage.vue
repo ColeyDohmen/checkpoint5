@@ -28,7 +28,11 @@
               v-model="state.newBlog.body"
             />
           </div>
-          <button type="button" class="btn btn-primary" @click="createBlog()">
+          <button
+            type="button"
+            class="btn btn-primary mx-2"
+            @click="createBlog()"
+          >
             New Blog
           </button>
         </div>

@@ -10,13 +10,13 @@
           ></i>
           <div class="card shadow">
             <div class="col-12 text-center">
-              <h2 class="card-title">
+              <h3 class="card-title">
                 {{ blog.title }}
-              </h2>
+              </h3>
 
-              <h4 v-if="blog.creator">
+              <p v-if="blog.creator">
                 {{ blog.creator.email }}
-              </h4>
+              </p>
             </div>
           </div>
         </div>

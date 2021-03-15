@@ -17,7 +17,11 @@
             v-model="state.newComment.body"
           />
         </div>
-        <button type="button" class="btn btn-primary" @click="createComment()">
+        <button
+          type="button"
+          class="btn btn-primary mx-2"
+          @click="createComment()"
+        >
           New Comment
         </button>
       </div>
