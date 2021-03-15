@@ -1,7 +1,7 @@
 <template>
-  <div class="component container">
+  <div class="component container text-center">
     <h1></h1>
-    <h2>{{ state.activeBlog.title }}</h2>
+    <h1>{{ state.activeBlog.title }}</h1>
     <h3>{{ state.activeBlog.body }}</h3>
 
     <form class="form-inline" v-if="state.user.isAuthenticated">
