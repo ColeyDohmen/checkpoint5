@@ -6,8 +6,7 @@
       </div>
     </div>
     <div class="row">
-      <!-- FIXME isAuthenticated v-if-->
-      <form class="form-inline">
+      <form class="form-inline" v-if="state.user.isAuthenticated">
         <div class="form-group">
           <input
             type="text"
@@ -56,6 +55,7 @@ export default {
   name: 'BlogPage',
   setup() {
     const state = reactive({
+      user: computed(() => AppState.user),
       blogs: computed(() => AppState.blogs),
       newBlog: {
         title: '',

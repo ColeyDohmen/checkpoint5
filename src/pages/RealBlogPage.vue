@@ -1,6 +1,26 @@
 <template>
   <div class="component">
     <h1>Hullo</h1>
+    <!-- <h2>{{ activeBlog.title }}</h2>
+    <h3>{{ activeBlog.body }}</h3> -->
+    <form class="form-inline">
+      <div class="form-group">
+        <div class="form-group">
+          <input
+            type="text"
+            name="body"
+            id="body"
+            class="form-control"
+            placeholder="Body"
+            aria-describedby="helpId"
+            v-model="state.newComment.body"
+          />
+        </div>
+        <button type="button" class="btn btn-primary" @click="createComment()">
+          New Comment
+        </button>
+      </div>
+    </form>
     <CommentComponent
       v-for="commentData in state.comments"
       :key="commentData.id"
@@ -19,10 +39,19 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
-      comments: computed(() => AppState.comments)
+      comments: computed(() => AppState.comments),
+      activeBlog: computed(() => AppState.activeBlog),
+      activeBlogs: {
+        title: '',
+        body: ''
+      },
+      newComment: {
+        body: ''
+      }
     })
     onMounted(() => {
       blogsService.getAllComments(route.params.id)
+      blogsService.getBlogById(route.params.id)
     })
     return {
       state

@@ -21,6 +21,11 @@ class BlogsService {
     const res = await api.get(`api/blogs/${id}/comments`)
     AppState.comments = res.data
   }
+
+  async getBlogById(id) {
+    const res = await api.get(`api/blogs/${id}`)
+    AppState.activeBlog = res.data
+  }
 }
 
 export const blogsService = new BlogsService()

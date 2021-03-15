@@ -2,7 +2,7 @@
   <div class="comment component">
     <div class="div card text center">
       <h2>{{ comment.body }}</h2>
-      <h3>hey</h3>
+      <h5>-{{ comment.creator.email }}</h5>
     </div>
   </div>
 </template>
@@ -14,7 +14,8 @@ import { blogsService } from '../services/BlogsService'
 export default {
   name: 'CommentComponent',
   props: {
-    blog: { type: Object, required: true }
+    blog: { type: Object, required: true },
+    comment: { type: Object, required: true }
   },
   setup(props) {
     const state = reactive({
