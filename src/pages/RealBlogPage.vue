@@ -3,7 +3,8 @@
     <h1>Comments</h1>
     <!-- <h2>{{ activeBlog.title }}</h2>
     <h3>{{ activeBlog.body }}</h3> -->
-    <form class="form-inline">
+
+    <form class="form-inline" v-if="state.user.isAuthenticated">
       <div class="form-group">
         <div class="form-group">
           <input
@@ -39,6 +40,7 @@ export default {
   setup() {
     const route = useRoute()
     const state = reactive({
+      user: computed(() => AppState.user),
       comments: computed(() => AppState.comments),
       activeBlog: computed(() => AppState.activeBlog),
       blog: computed(() => AppState.blog),
@@ -47,8 +49,8 @@ export default {
       //   body: ''
       // },
       newComment: {
-        body: '',
-        blog: AppState.activeBlog.id
+        body: ''
+        // blog: route.params.id
       }
     })
     onMounted(() => {
@@ -58,8 +60,8 @@ export default {
     return {
       state,
       async createComment() {
+        state.newComment.blog = route.params.id
         await blogsService.createComment(state.newComment)
-        state.newComment.blog = AppState.activeBlog.id
         state.newComment = {}
       }
     }

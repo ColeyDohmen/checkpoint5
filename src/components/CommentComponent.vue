@@ -1,8 +1,17 @@
 <template>
   <div class="comment component">
     <div class="div card text center">
-      <h2>{{ comment.body }}</h2>
-      <h5>-{{ comment.creator.email }}</h5>
+      <div class="row card blog" v-if="comment.creator">
+        <div class="text-right absolute top right p-2 z-2">
+          <i
+            class="fas fa-times text-danger action"
+            @click="deleteComment"
+            v-if="comment.creator.email == state.user.email"
+          ></i>
+          <h2>{{ comment.body }}</h2>
+          <h5>-{{ comment.creator.email }}</h5>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -25,7 +34,10 @@ export default {
       blogsService.getCommentsByBlogId(props.blog.id)
     })
     return {
-      state
+      state,
+      deleteComment() {
+        blogsService.deleteComment(props.comment.id)
+      }
     }
   },
   components: {}

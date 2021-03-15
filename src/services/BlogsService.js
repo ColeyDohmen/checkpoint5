@@ -26,6 +26,11 @@ class BlogsService {
     AppState.comments.push(res.data)
   }
 
+  async deleteComment(id) {
+    await api.delete('api/comments/' + id)
+    // this.getAllComments()
+  }
+
   async getBlogById(id) {
     const res = await api.get(`api/blogs/${id}`)
     AppState.activeBlog = res.data
