@@ -10,6 +10,7 @@
           ></i>
           <h2>{{ comment.body }}</h2>
           <h5>-{{ comment.creator.email }}</h5>
+          <p></p>
         </div>
       </div>
     </div>
@@ -20,6 +21,7 @@
 import { computed, onMounted, reactive } from 'vue'
 import { AppState } from '../AppState'
 import { blogsService } from '../services/BlogsService'
+import { useRoute } from 'vue-router'
 export default {
   name: 'CommentComponent',
   props: {
@@ -27,6 +29,7 @@ export default {
     comment: { type: Object, required: true }
   },
   setup(props) {
+    const route = useRoute()
     const state = reactive({
       user: computed(() => AppState.user)
     })
@@ -36,11 +39,12 @@ export default {
     return {
       state,
       deleteComment() {
-        blogsService.deleteComment(props.comment.id)
+        blogsService.deleteComment(props.comment.id, route.params.id)
       }
     }
   },
-  components: {}
+  components: {
+  }
 }
 </script>
 

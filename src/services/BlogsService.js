@@ -26,9 +26,9 @@ class BlogsService {
     AppState.comments.push(res.data)
   }
 
-  async deleteComment(id) {
+  async deleteComment(id, blogId) {
     await api.delete('api/comments/' + id)
-    // this.getAllComments()
+    this.getAllComments(blogId)
   }
 
   async getBlogById(id) {

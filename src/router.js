@@ -33,7 +33,6 @@ const routes = [
     component: loadPage('RealBlogPage')
   }
 ]
-// '/blogs/:id',
 
 const router = createRouter({
   linkActiveClass: 'router-link-active',

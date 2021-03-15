@@ -50,7 +50,6 @@ export default {
       // },
       newComment: {
         body: ''
-        // blog: route.params.id
       }
     })
     onMounted(() => {
