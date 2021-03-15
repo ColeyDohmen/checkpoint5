@@ -1,8 +1,8 @@
 <template>
   <div class="component container">
-    <h1>Comments</h1>
-    <!-- <h2>{{ activeBlog.title }}</h2>
-    <h3>{{ activeBlog.body }}</h3> -->
+    <h1></h1>
+    <h2>{{ state.activeBlog.title }}</h2>
+    <h3>{{ state.activeBlog.body }}</h3>
 
     <form class="form-inline" v-if="state.user.isAuthenticated">
       <div class="form-group">
@@ -52,9 +52,9 @@ export default {
         body: ''
       }
     })
-    onMounted(() => {
-      blogsService.getAllComments(route.params.id)
-      blogsService.getBlogById(route.params.id)
+    onMounted(async () => {
+      await blogsService.getAllComments(route.params.id)
+      await blogsService.getBlogById(route.params.id)
     })
     return {
       state,
