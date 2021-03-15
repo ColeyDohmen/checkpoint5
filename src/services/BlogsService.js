@@ -9,7 +9,6 @@ class BlogsService {
   async createBlog(newBlog) {
     const res = await api.post('api/blogs', newBlog)
     AppState.blogs.push(res.data)
-    // return res.data.id
   }
 
   async delete(id) {
@@ -20,6 +19,11 @@ class BlogsService {
   async getAllComments(id) {
     const res = await api.get(`api/blogs/${id}/comments`)
     AppState.comments = res.data
+  }
+
+  async createComment(newComment) {
+    const res = await api.post('api/comments', newComment)
+    AppState.comments.push(res.data)
   }
 
   async getBlogById(id) {

@@ -1,6 +1,6 @@
 <template>
-  <div class="component">
-    <h1>Hullo</h1>
+  <div class="component container">
+    <h1>Comments</h1>
     <!-- <h2>{{ activeBlog.title }}</h2>
     <h3>{{ activeBlog.body }}</h3> -->
     <form class="form-inline">
@@ -41,12 +41,14 @@ export default {
     const state = reactive({
       comments: computed(() => AppState.comments),
       activeBlog: computed(() => AppState.activeBlog),
-      activeBlogs: {
-        title: '',
-        body: ''
-      },
+      blog: computed(() => AppState.blog),
+      // activeBlogs: {
+      //   title: '',
+      //   body: ''
+      // },
       newComment: {
-        body: ''
+        body: '',
+        blog: AppState.activeBlog.id
       }
     })
     onMounted(() => {
@@ -54,7 +56,12 @@ export default {
       blogsService.getBlogById(route.params.id)
     })
     return {
-      state
+      state,
+      async createComment() {
+        await blogsService.createComment(state.newComment)
+        state.newComment.blog = AppState.activeBlog.id
+        state.newComment = {}
+      }
     }
   },
   components: {}
